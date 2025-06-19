@@ -13,7 +13,7 @@ I have also used the built-in Python library ```webbroswer``` to simulate a 'pla
 *Listed here are the installations and versions I have used for this assignment:*
 - ```mysql-connector-python==9.2.0```
   - ```pip install mysql-connector-python```
-- ```Flask~=3.1.0```
+- ```Flask==3.1.0```
   - ```pip install flask```
 - ```requests==2.32.3```
   - ```pip install requests```
