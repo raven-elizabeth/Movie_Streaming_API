@@ -10,7 +10,7 @@ I have also used the built-in Python library ```webbroswer``` to simulate a 'pla
 ## How to run the API
 *Please note: I have an additional database for bug reports, it is optional to use though. If you don't wish to use it, **DO NOT** select option **d) Submit bug report** and **DO NOT** choose to submit a report if asked to do so when adding a genre to a movie.*
 ### Project requirements
-*I have updated the requirements.txt for this repository to reflect only the packages I have actually used in my assignments. Listed here are only the installations and versions I have used for this assignment:*
+*Listed here are the installations and versions I have used for this assignment:*
 - ```mysql-connector-python==9.2.0```
   - ```pip install mysql-connector-python```
 - ```Flask~=3.1.0```
