@@ -66,24 +66,49 @@ def see_all_prod_companies():
 
 # Get user's intention for using the program
 def get_user_intention():
-    user_intention = None
-    invalid_intention = 1
+    app_actions = {
+        "a": "Watch a movie",
+        "b": "Edit the catalogue",
+        "c": "Show data from DB",
+        "d": "Bug report"
+    }
+
     print("Would you like to:")
-    while invalid_intention > 0:
-        user_intention = input("a) Watch a movie\nb) Edit the catalogue\nc) Show data from DB\nd) Submit bug report\n").lower()
-        if user_intention == "a" or user_intention == "a)" or user_intention == "b" or user_intention == "b)" or user_intention == "c" or user_intention == "c)" or user_intention == "d" or user_intention == "d)" or user_intention[0:5] == "watch" or user_intention[0:4] == "edit" or user_intention[0:4] == "show" or user_intention[0:6] == "submit":
-            invalid_intention -= 1
-            if user_intention == "a" or user_intention == "a)" or user_intention[0:5] == "watch":
-                user_intention = "watch"
-            elif user_intention == "b" or user_intention == "b)" or user_intention[0:4] == "edit":
-                user_intention = "edit"
-            elif user_intention == "c" or user_intention == "c)" or user_intention[0:4] == "show":
-                user_intention = "show"
-            else:
-                user_intention = "bug"
-        else:
-            print("You must choose a valid option")
-    return user_intention
+    for key, value in app_actions.items():
+        print(f"{key}. {value}")
+
+
+    accepted_values = [i.split()[0].lower() for i in app_actions.values()]
+    while True:
+        user_intention = input("Please enter a valid option: ").lower()
+
+        if user_intention in app_actions.keys():
+            keyword = app_actions[user_intention].split()[0].lower()
+            return keyword
+
+        # For values
+        for word in user_intention.split():
+            if word in accepted_values:
+                return word
+
+    # invalid_intention = 1
+    # while invalid_intention > 0:
+    #     user_intention = input("a) Watch a movie\nb) Edit the catalogue\nc) Show data from DB\nd) Submit bug report\n").lower()
+    #
+    #     if user_intention == "a" or user_intention == "a)" or user_intention == "b" or user_intention == "b)" or user_intention == "c" or user_intention == "c)" or user_intention == "d" or user_intention == "d)" or user_intention[0:5] == "watch" or user_intention[0:4] == "edit" or user_intention[0:4] == "show" or user_intention[0:6] == "submit":
+    #         invalid_intention -= 1
+    #         if user_intention == "a" or user_intention == "a)" or user_intention[0:5] == "watch":
+    #             user_intention = "watch"
+    #         elif user_intention == "b" or user_intention == "b)" or user_intention[0:4] == "edit":
+    #             user_intention = "edit"
+    #         elif user_intention == "c" or user_intention == "c)" or user_intention[0:4] == "show":
+    #             user_intention = "show"
+    #         else:
+    #             user_intention = "bug"
+    #     else:
+    #         print("You must choose a valid option")
+    #
+    # return user_intention
 
 
 # Function to validate user integer input
@@ -688,6 +713,7 @@ def bug_report():
 # Main program
 def choose_option():
     option = get_user_intention()
+    print("")
     if option == "watch":
         watch_movie()
     elif option == "show":
@@ -710,7 +736,7 @@ def run():
     counter = 0
     while counter == 0: # Continuous use of program until user actively exits
         choose_option()
-        if user_yes_response("Exit program? (y/n) "):
+        if user_yes_response("\nExit program? (y/n) "):
             counter = 1
 
     print("\n----- Thank you for using Raven's Streaming Services -----")
